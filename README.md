@@ -2,7 +2,7 @@
 
 This repository contains the code and documentation for a computational historiographical study of the Antonine Plague. The study employs Ordinary Differential Equation (ODE) models to explore various hypothesized transmission routes of disease spread and conducts sensitivity analyses to assess the impact of different parameters.
 
-[![DOI](link-to-badge)](doi-link-to-zenodo)
+[![DOI](https://zenodo.org/badge/741145779.svg)](https://zenodo.org/doi/10.5281/zenodo.10610313)
 
 ## Repository Contents
 
