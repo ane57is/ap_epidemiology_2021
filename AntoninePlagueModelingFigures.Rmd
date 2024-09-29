@@ -488,11 +488,23 @@ S2_plg_all<-ggplot(long_DF_plg_all, aes(time, NumberDead, col=Model)) + geom_lin
   theme(panel.border = element_blank(), panel.grid.major = element_blank(),panel.grid.minor = element_blank(), axis.line = element_line(colour = "black"))
 
 tiff("FigS2_plg_all_SEIR.tiff", width=7, height=5, units="in", compression = "lzw", res=600)
-S2_plg_all_SEIR<-ggplot(long_DF_plg_all_SEIR, aes(time, NumberDead, col=Model)) + geom_line() +
-  ylab("Humans dead from disease")+ xlab("Outbreak Duration (Year)")+
-   scale_color_discrete(labels = c(bSEIR_D="Bubonic SEIR", bSEIRrK_D="Bubonic SEIR (Rat Dyn.)", bpSEIR_D="Bubonic & Pneumonic SEIR"))+
-  theme_bw() +
-  theme(panel.border = element_blank(), panel.grid.major = element_blank(),panel.grid.minor = element_blank(), axis.line = element_line(colour = "black"))
+S2_plg_all_SEIR <- ggplot(long_DF_plg_all_SEIR, aes(time, NumberDead, col = Model, linetype = Model)) +
+    geom_line() +
+    scale_color_manual(values = c("red", "green", "blue"),
+                       labels = c("Bubonic & Pneumonic SEIR", "Bubonic SEIR", "Bubonic SEIR (Rat Dyn.)")) +
+    scale_linetype_manual(values = c("solid", "dashed", "dotted"),
+                          labels = c("Bubonic & Pneumonic SEIR", "Bubonic SEIR", "Bubonic SEIR (Rat Dyn.)")) +
+    ylab("Humans dead from disease") +
+    xlab("Outbreak Duration (Day)") +
+    theme_bw() +
+    theme(
+        panel.border = element_blank(),
+        panel.grid.major = element_blank(),
+        panel.grid.minor = element_blank(),
+        axis.line = element_line(colour = "black"),
+        legend.position = "right"
+    ) +
+    guides(color = guide_legend(override.aes = list(linetype = c("solid", "dashed", "dotted"))))
 
 S2_plg_all
 S2_plg_all_SEIR
